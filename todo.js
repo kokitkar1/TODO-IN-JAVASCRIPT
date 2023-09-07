@@ -39,7 +39,7 @@ function update() {
             <th scope="row">${index +1}</th>
             <td>${element[0]}</td>
             <td>${element[1]}</td>
-            <td> <button class="btn btn-sm btn-primary" onclick="deleted(${index})" >Delete</button> </td>
+            <td> <button class="btn btn-sm btn-danger btn-primary" onclick="deleted(${index})" >Delete</button> </td>
         </tr>`
     });
 
@@ -54,6 +54,21 @@ function deleted(itemIndex) {
     localStorage.setItem('itemJson', JSON.stringify(itemJsonArray))
     update();
     }
+
+
+function clearStorage() {
+    let person = prompt("Do you really want to clear all TODO's ?", "Yes Or No");
+
+    if(person == "Yes"){
+        if(confirm("Warning.... You will lost your all TODO's !!!")){
+            localStorage.clear()
+            update()
+        }
+    }else{
+        update()
+    }
+    
+}
 
 
 
