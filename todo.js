@@ -47,19 +47,21 @@ function update() {
     }
 
 
-function deleted(itemIndex) {
-    itemJsonArrayStr = localStorage.getItem('itemJson')
-    itemJsonArray = JSON.parse(itemJsonArrayStr)
-    itemJsonArray.splice(itemIndex,1);
-    localStorage.setItem('itemJson', JSON.stringify(itemJsonArray))
-    update();
+function deleted(itemIndex,element) {
+    if(confirm(`You Want To Delete the Sr.no ${itemIndex +1} Todo ?`)){
+        itemJsonArrayStr = localStorage.getItem('itemJson')
+        itemJsonArray = JSON.parse(itemJsonArrayStr)
+        itemJsonArray.splice(itemIndex,1);
+        localStorage.setItem('itemJson', JSON.stringify(itemJsonArray))
+        update();
+    }
     }
 
 
 function clearStorage() {
-    let person = prompt("Do you really want to clear all TODO's ?", "Yes Or No");
+    let clearTodo = prompt("Do you really want to clear all TODO's ?", "Yes Or No");
 
-    if(person == "Yes"){
+    if(clearTodo == "Yes"){
         if(confirm("Warning.... You will lost your all TODO's !!!")){
             localStorage.clear()
             update()
